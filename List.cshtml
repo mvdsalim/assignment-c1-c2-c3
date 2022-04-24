@@ -1,0 +1,22 @@
+﻿@model IEnumerable<n01495499.Models.Teacher>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<div id="containerlist">
+    <nav>
+        <a class="navlink" href="/Teacher/New">New Teacher</a>
+    </nav>
+    <h2>List of Teachers</h2>
+    <form action="/Teacher/List" method="GET">
+        Enter salary or Name(first or last) to search - <input type="text" name="SearchKey" autocomplete="off" />
+        <input type="submit" value="Search" />
+    </form>
+    @foreach (var teacher in Model)
+    {
+        <div class="listitem row">
+            <div class="col-md-12"><a href="/Teacher/Show/@teacher.TeacherId">Id - @teacher.TeacherId) @teacher.TeacherFName @teacher.TeacherLName @teacher.Salary @teacher.HireDate.ToLongDateString() @teacher.TeacherLName @teacher.EmployeeNumber, salary - @teacher.Salary</a></div>
+        </div>
+    }
+</div>
